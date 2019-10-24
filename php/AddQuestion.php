@@ -28,7 +28,7 @@
             if(!$mysqli){
             die("FalloalconectaraMySQL:".mysqli_connect_error());
             }
-            echo 'ConnectionOK <br>';
+            
 
 
             $correo=$_POST["correo"] ;

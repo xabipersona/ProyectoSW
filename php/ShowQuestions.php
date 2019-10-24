@@ -36,8 +36,7 @@ $mysqli=mysqli_connect($server,$user,$pass,$basededatos);
 
 			if(!$mysqli){
 			die("FalloalconectaraMySQL:".mysqli_connect_error());}
-			echo 'Conexion correcta <br>';
-
+		
 
  echo '<tr><td> Nº Pregunta </td><td> Usuario </td> <td> Pregunta </td> <td> Respuesta Correcta </td> </tr>';
 

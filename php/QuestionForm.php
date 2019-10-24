@@ -17,13 +17,14 @@
 
         <?php 
         $correo=$_GET['correo'];
+
     	echo "<input type='text' id='correo' name='correo' value='$correo' readonly>";
         ?>
 
     	<br>
         Inserta pregunta:
         <br>
-    	<input type="text" id="pregunta" name="pregunta" required pattern="[A-Za-z0-9_]{10,200}">
+    	<input type="text" id="pregunta" name="pregunta" required pattern="[A-Za-z0-9_ ?¿ñá-ú]{10,}">
     	<br>
     	Respuesta correcta:
     	<br>
@@ -59,7 +60,8 @@
 
            
 
-    <script src="../js/jquery-3.4.1.min.js"></script>
+ 
+
  <!--   <script src="../js/ValidateFieldsQuestion.js"></script> -->
   </section>
   <?php include '../html/Footer.html' ?>

@@ -50,11 +50,19 @@
 
            
            if($contraseña2==$contraseña){
-                echo("<script> alert('BIENVENIDO AL SISTEMA: ". $username. "')</script>");
+            
+                echo("<script src='../js/jquery-3.4.1.min.js'> </script>");
+                echo("<script> alert('Bienvenido al sistema ". $username. "')</script>");
+
+                
+
                 $host  = $_SERVER['HTTP_HOST'];
                 $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
                 $extra = 'QuestionForm.php?correo='.$correo;
-                header("Location: http://$host$uri/$extra");
+
+                echo("<script> window.location.href='http://$host$uri/$extra'; </script>");
+
+               // header("Location: http://$host$uri/$extra");
                 
            }else{
                   echo 'Nombre de usuario o contraseña incorrecto';

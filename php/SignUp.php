@@ -20,7 +20,7 @@
         <br>
         Introducir Nombre y Apellidos:
         <br>
-        <input type="text" id="nombre" name="nombre" required>
+        <input type="text" id="nombre" name="nombre" required pattern="[a-zA-Zñá-ú]+[ ]+[a-zA-Zñá-ú]{2,}([ ]+[a-zA-Zñá-ú]{2,}){0,}">
         <br>
         Introducir Contraseña:
         <br>
