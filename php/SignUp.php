@@ -1,89 +1,113 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <?php include '../html/Head.html'?>
+    <?php include '../html/Head.html'?>
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
-    <div>
-
-     <form id="formulario" method="POST">
-        Tipo de usuario:
-        <br>
-        <input type="radio" name="tipo" value="alumno" checked> Alumno
-        <input type="radio" name="tipo" value="profesor" > Profesor  
-        <br>
-        Introducir correo:
-        <br>
-        <input type="email" id="correo" name="correo" required pattern="([a-z]+[0-9]{3}@+(ikasle\.ehu\.eus|ikasle\.ehu\.es))|([a-z]+@+(ehu\.es|ehu\.eus))">
-        <br>
-        Introducir Nombre y Apellidos:
-        <br>
-        <input type="text" id="nombre" name="nombre" required pattern="[a-zA-Zñá-ú]+[ ]+[a-zA-Zñá-ú]{2,}([ ]+[a-zA-Zñá-ú]{2,}){0,}">
-        <br>
-        Introducir Contraseña:
-        <br>
-        <input type="password" id="contraseña" name="contraseña" required>
-        <br>
-        Repetir Contraseña:
-        <br>
-        <input type="password" id="contraseña2" name="contraseña2" required>
-        <br> 
-
-        <input type="submit" id="confirmar" value="Enviar">
-    </form>
-
-<?php
-
-        if(isset($_POST['correo'])){
-
-            $password=$_POST['contraseña'];
-            $password2=$_POST['contraseña2'];
-            if(strlen($password)<6){
-                echo "La contraseña debe tener al menos 6 caracteres";
-            }else if($password!=$password2){
-                echo "Las contraseñas no coinciden";
-            }
-            else{ 
-
-                include "DbConfig.php";
-                $mysqli= mysqli_connect($server,$user,$pass,$basededatos);
-                if(!$mysqli){
-                die("FalloalconectaraMySQL:".mysqli_connect_error());
-                }
-                echo 'ConnectionOK <br>';
-              
-            $correo=$_POST["correo"] ;
-            $nombre=$_POST["nombre"];
-            $tipo=$_POST["tipo"];
-            
-
-
-            $insertar="INSERT INTO usuarios VALUES('$correo','$tipo', '$nombre', '$password', '0')";
-
-            if (!mysqli_query($mysqli ,$insertar)){
-                die('Error: ' . mysqli_error($mysqli));
-            }
-
-            echo 'Registrado correctamente';
-
-            }
-        }
-       
-
-
-?>
-     
-
-    </div>
-   
+      <h2>Registro de nuevo usuario.</h2>
       
-
-    <script src="../js/jquery-3.4.1.min.js"></script>
- <!--   <script src="../js/ValidateFieldsQuestion.js"></script> -->
+      <div>
+         <form action="SignUp.php" name="fregister" id="fregister" method="post" enctype="multipart/form-data">
+            <p>Selecciona el tipo de usuario. *</p>
+            <select id="tipoUsu" name="tipoUsu">
+                <option value="1" selected>Alumno</option>
+                <option value="2">Profesor</option>
+            </select>
+            <p>Introduce tu dirección de correo: *</p>
+            <input type="email" size="60" id="dirCorreo" name="dirCorreo" required >
+            <p>Introduce tu nombre y apellido(s) *</p>
+            <input type="text" size="60" id="nombreApellidos" name="nombreApellidos" required>
+            <p>Contraseña: *</p>
+            <input type="password" size="60" id="pass" name="pass" required>
+            <p>Repite la contraseña: *</p>
+            <input type="password" size="60" id="passR" name="passR" required>
+            <div id="selector">
+            <p>Selecciona una foto de perfil: (Opcional) </p>
+            <input type="file" id="file" accept="image/*" name="Imagen">
+            </div>
+            <p> <input type="submit" id="submit" value="Enviar"> <input type="reset" value="Limpiar"></p>
+        </form>
+      </div>
+      
+      <div>
+      
+        <?php
+            if(isset($_REQUEST['dirCorreo'])){
+                $regexAlu = "/^[a-zA-Z]+(([0-9]{3})+@ikasle\.ehu\.(eus|es))$/";
+                $regexProf = "/^[a-zA-Z]+(\.[a-zA-Z]+@ehu\.(eus|es)|@ehu\.(eus|es))$/";
+                $regexPass = "/^.{6,}$/";
+                $regexNombre = "/(\w.+\s).+/";
+                
+                $resulAlu = preg_match($regexAlu,$_REQUEST['dirCorreo']);
+                if(($_REQUEST['tipoUsu']=="1") && $resulAlu){
+                    if($_REQUEST['pass']==$_REQUEST['passR']&&preg_match($regexPass,$_REQUEST['pass'])){
+                        if(preg_match($regexNombre,$_REQUEST['nombreApellidos'])){
+                            introducirNuevoUsuario();
+                        }else{
+                           echo"Debes introducir tu nombre y al menos un apellido.<br>";
+                            echo "<a href=\"javascript:history.back()\">Volver a atras</a>"; 
+                        }                       
+                    }else{
+                        echo" Las contraseñas tienen menos de 6 caracteres o no coinciden.<br>";
+                        echo "<a href=\"javascript:history.back()\">Volver a atras</a>";
+                    }
+                }elseif($_REQUEST['tipoUsu']=="2" && preg_match($regexProf,$_REQUEST['dirCorreo'])){
+                    if($_REQUEST['pass']==$_REQUEST['passR']&&preg_match($regexPass,$_REQUEST['pass'])){
+                        if(preg_match($regexNombre,$_REQUEST['nombreApellidos'])){
+                            introducirNuevoUsuario();
+                        }else{
+                            echo"Debes introducir tu nombre y al menos un apellido.<br>";
+                            echo "<a href=\"javascript:history.back()\">Volver a atras</a>"; 
+                        } 
+                    }else{
+                        echo" Las contraseñas tienen menos de 6 caracteres o no coinciden.<br>";
+                        echo "<a href=\"javascript:history.back()\">Volver a atras</a>";
+                    }
+                }else{
+                    echo" El correo electronico no es correcto o no se corresponde con el usuario seleccionado.<br>";
+                    echo "<a href=\"javascript:history.back()\">Volver a atras</a>";
+                }
+            }
+            
+        function introducirNuevoUsuario(){
+            include 'DbConfig.php';
+            //Creamos la conexion con la BD.
+            $mysqli = mysqli_connect($server,$user,$pass,$basededatos);
+            if(!$mysqli)
+            {
+                die("Fallo al conectar a MySQL: " .mysqli_connect_error());
+            }
+            
+            $tipo = $_REQUEST['tipoUsu'];
+            $email = $_REQUEST['dirCorreo'];
+            $nombreApellidos = $_REQUEST['nombreApellidos'];
+            $pass = $_REQUEST['pass'];
+            if($_FILES['Imagen']['name'] == ""){               
+                $image = "../images/usuarioAnonimo.jpg";
+            }else{
+                $image = $_FILES['Imagen']['tmp_name'];             
+            }
+            
+            $contenido_imagen = base64_encode(file_get_contents($image));
+            $sql = "INSERT INTO usuarios VALUES ($tipo,'$email','$nombreApellidos','$pass','$contenido_imagen');";
+            
+             if(!mysqli_query($mysqli,$sql))
+            {
+                die("Error: " .mysqli_error($mysqli));
+            }
+            echo "<script>
+                    alert('Registro realizado correctamente. Pulsa aceptar para acceder a la pantalla de LogIn.');
+                    window.location.href='LogIn.php';
+                </script>";        
+        }
+    
+        ?>
+      
+      
+      </div>
   </section>
   <?php include '../html/Footer.html' ?>
-
 </body>
 </html>

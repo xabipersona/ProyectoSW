@@ -2,29 +2,27 @@
 <html>
 <head>
   <?php include '../html/Head.html'?>
-  <style type="text/css">
-  	img{
-  		width: 100px;
-  		height: 100px;
-  	}
-  </style>
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
     <div>
 
-      <h2>DATOS DEL AUTOR/AUTORES</h2>
+      <h2>DATOS DEL AUTOR/AUTORES</h2><br>
+        <p>En agradecimiento a Iñaki y Gorka por la cesión de su proyecto.</p>
+        <p>Asier Garcia Osa</p>
+        <p>Correo contacto: <a href="mailto:agarcia697@ikasle.ehu.eus" >agarcia697@ikasle.ehu.eus</a></p>
+        <br>
+        <img src="../images/hombres-calvos.jpg" width="125" height="125">
+        <p>Estudiante de Ingeniería Informática en la especialización <br> de Ingeniería del Software.</p>
+        <br><hr>
+        <p>Xabier Persona Peña</p>
+        <p>Correo contacto: <a href="mailto:xpersona001@ikasle.ehu.eus" >xpersona001@ikasle.ehu.eus</a></p>
+        <br>
+        <img src="../images/mister.png" width="125" height="125">
+        <p>Estudiante de Ingeniería Informática en la especialización <br> de Ingeniería del Software.</p>
 
     </div>
-    <br>
-    <p>Nombre y Apellidos: Asier Garcia y Xabier Persona</p>
-    <br>
-    <p>Especialidad cursada en el grado: Ingeniéría de software</p>
-    <img src="../images/mister.png">
-    <img src="../images/hombres-calvos.jpg">
-    <p>Email: agarcia697@ikasle.ehu.eus xpersona001@ikasle.ehu.eus</p>
-
   </section>
   <?php include '../html/Footer.html' ?>
 </body>

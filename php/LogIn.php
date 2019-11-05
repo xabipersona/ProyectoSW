@@ -8,84 +8,58 @@
   <section class="main" id="s1">
     <div>
 
-     <form id="formulario" method="POST">
-
-        Introducir correo:
-        <br>
-        <input type="email" id="correo" name="correo" required pattern="([a-z]+[0-9]{3}@+(ikasle\.ehu\.eus|ikasle\.ehu\.es))|([a-z]+@+(ehu\.es|ehu\.eus))">
-        <br>
-        Introducir Contraseña:
-        <br>
-        <input type="password" id="contraseña" name="contraseña" required>
-       <br>
-
-        <input type="submit" id="confirmar" value="Enviar">
-    </form>
-
-<?php
-
-        if(isset($_POST['correo'])){
-
-            include "DbConfig.php";
-            $mysqli= mysqli_connect($server,$user,$pass,$basededatos);
-
-            if(!$mysqli){
-            die("FalloalconectaraMySQL:".mysqli_connect_error());
-             }
-
-              
-            $correo=$_POST["correo"] ;
-            $contraseña=$_POST['contraseña'];;
-            
-
-
-            $consulta="SELECT * FROM usuarios WHERE Email='$correo'";
-            
-            $resultado=mysqli_query($mysqli ,$consulta);
-
-            $row= mysqli_fetch_array($resultado);
-
-           $contraseña2=$row['Password'];
-           $username=$row['Nombre'];
-
-           
-           if($contraseña2==$contraseña){
-            
-                echo("<script src='../js/jquery-3.4.1.min.js'> </script>");
-                echo("<script> alert('Bienvenido al sistema ". $username. "')</script>");
-
-                
-
-                $host  = $_SERVER['HTTP_HOST'];
-                $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-                $extra = 'QuestionForm.php?correo='.$correo;
-
-                echo("<script> window.location.href='http://$host$uri/$extra'; </script>");
-
-               // header("Location: http://$host$uri/$extra");
-                
-           }else{
-                  echo 'Nombre de usuario o contraseña incorrecto';
-           }
-
-          
-
-            
-        }
-       
-
-
-?>
-     
-
-    </div>
-   
+     <h2>Inicio de sesion.</h2>
       
-
-    <script src="../js/jquery-3.4.1.min.js"></script>
- <!--   <script src="../js/ValidateFieldsQuestion.js"></script> -->
+      <div>
+         <form action="LogIn.php" name="flogin" id="flogin" method="post" enctype="multipart/form-data">
+            <p>Introduce tu dirección de correo: *</p>
+            <input type="email" size="60" id="dirCorreo" name="dirCorreo" required >
+            <p>Contraseña: *</p>
+            <input type="password" size="60" id="pass" name="pass" required>
+            <p> <input type="submit" id="submit" value="Enviar"> <input type="reset" value="Limpiar"></p>
+        </form>
+      </div>
+      
+    </div>
+      
+      <div>
+        <?php
+            if(isset($_REQUEST['dirCorreo'])){
+                include 'DbConfig.php';
+                
+                $mysqli = mysqli_connect($server,$user,$pass,$basededatos);
+                if(!$mysqli){
+                    die("Fallo al conectar con Mysql: ".mysqli_connect_error());
+                }
+                $email = $_REQUEST['dirCorreo'];
+                $pass = $_REQUEST['pass'];
+                
+                $sql = "SELECT * FROM usuarios WHERE email=\"".$email."\" and pass=\"".$pass."\";";
+                
+                $resultado = mysqli_query($mysqli,$sql,MYSQLI_USE_RESULT);
+                if(!$resultado){
+                    die("Error: ".mysqli_error($mysqli));
+                }
+                $row = mysqli_fetch_array($resultado);
+                if($row['email']==$email){
+                   /* sleep(3);
+                    header("location:Layout.php?email=".$_REQUEST['dirCorreo']);*/
+                    echo "<script>
+                    alert('Inicio de sesion realizado correctamente. Pulsa aceptar para acceder a la pantalla principal.');
+                    window.location.href='Layout.php?email=".$_REQUEST['dirCorreo']."';
+                    </script>";  
+                }else{
+                    echo "Usuario o contraseña incorrectos, prueba de nuevo. <br>";
+                    echo "<a href=\"javascript:history.back()\">Volver a atras</a>";
+                }
+                
+            }
+    
+    
+        ?>
+      
+      </div>
   </section>
   <?php include '../html/Footer.html' ?>
-
 </body>
 </html>

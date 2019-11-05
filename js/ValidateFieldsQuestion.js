@@ -1,57 +1,45 @@
-//$(document).ready(function(){
+function validarFormulario(){
+    
+    var resul = true;
+    $("form :input").each(function(){
+        var input = $(this);
+        if(input.val()==""){
+            resul = false;
+            alert("El campo "+ "\' "+ input.attr("name")+"\'"+" esta vacio.");
 
-	$("form").submit(function(){
-	return validar();
-	});
-//});
-
-
-
-function validar(){
-
-	
-
-	pre= $("#pregunta").val();
-	cor= $("#correcta").val();
-	inc= $("#incorrecta1").val();
-	inc2= $("#incorrecta2").val();
-	inc3= $("#incorrecta3").val();
-
-	
-
-	if(pre.length==0 || cor.length==0 || inc.length==0 || inc2.length==0 || inc3.length==0){
-		alert("Faltan campos por completar");
-		return false;
-	
-	}
-	else if(pre.length<10){
-		alert("La pregunta debe ser mínimo de 10 caracteres");
-				return false;
-
-	}
-
-	return validarCorreo();
+        }else{
+            if(input.attr("id")=="dirCorreo"){
+                resul = validarCorreo(input.val());
+                if(!resul){
+                    alert("El correo electronico introducido no es correcto.");
+                }
+            }else if(input.attr("id")=="nombrePregunta"){
+                if(input.val().length<10){
+                    alert("El enunciado de la pregunta es demasiado corto.");
+                    resul = false;
+                }
+            }
+        }
+    });
+    return resul;
 }
 
+$('document').ready(function(){
+    $('#submit').click(function(){
+        return validarFormulario();
+    });
+});
 
+function validarCorreo(correo){
 
-function validarCorreo(){
-
-	var validacion = /[a-z]+[0-9]{3}@+(ikasle.ehu.eus|ikasle.ehu.es|ehu.es|ehu.eus)/;
-	var correo = $('#correo');
-	
-	if(validacion.test(correo.val())){
-		alert("correcto");
-				return true;
-
-		
-	}else{
-		alert("email incorrecto");
-				return false;
-
-		
-		
-	}
-	
-
+    var regexAlu = /^[a-zA-Z]+(([0-9]{3})+@ikasle\.ehu\.(eus|es))$/;
+    var regexPro = /^[a-zA-Z]+(\.[a-zA-Z]+@ehu\.(eus|es)|@ehu\.(eus|es))$/;
+    
+    if(regexAlu.test(correo)){
+        return true;
+    }
+    else if(regexPro.test(correo)){
+        return true;
+    }
+    return false;
 }

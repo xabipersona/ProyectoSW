@@ -4,22 +4,18 @@
   <?php include '../html/Head.html'?>
 </head>
 <body>
-    <?php
-
-    echo("<script> alert('HASTA LA PRÓXIMA!')</script>");
-
-                
-
-    $host  = $_SERVER['HTTP_HOST'];    
-    $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-    $extra = 'Layout.php';
-
-    echo("<script> window.location.href='http://$host$uri/$extra'; </script>");
-
-
-        
-       
-
-    ?>
+  <?php include '../php/Menus.php' ?>
+  <section class="main" id="s1">
+    <div>
+        <?php
+            echo "<script>
+                    alert('Adios, vuelve cuando quieras.');
+                    window.location.href='Layout.php';
+                </script>";  
+        ?>
+      
+    </div>
+  </section>
+  <?php include '../html/Footer.html' ?>
 </body>
 </html>
