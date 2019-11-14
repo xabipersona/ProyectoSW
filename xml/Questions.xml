@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assessmentItems>
+	<assessmentItem subject="Web" author="jvadillo001@ikasle.ehu.eus">
+		<itemBody>
+			<p>Tag HTML para añadir un formulario</p>
+		</itemBody>
+		<correctResponse>
+			<value>
+				FORM
+			</value>
+		</correctResponse>
+		<incorrectResponses>
+			<value> OBJECT </value>
+			<value> TABLE </value>
+			<value> DIV </value>
+		</incorrectResponses>
+	</assessmentItem>
+		<assessmentItem subject="Internet" author="rarruabarrena001@ikasle.ehu.eus">
+		<itemBody>
+			<p>Este protocolo acabará funcionando
+			incluso entre dos latas unidas por un cordón</p>
+		</itemBody>
+		<correctResponse>
+			<value>
+				TCP/IP
+			</value>
+		</correctResponse>
+		<incorrectResponses>
+			<value> HTTP </value>
+			<value> SMTP </value>
+			<value> Ninguna es correcta </value>
+		</incorrectResponses>
+	</assessmentItem>
+	<assessmentItem subject="Curso" author="xabipersona@ehu.es">
+		<itemBody>
+			<p>¿Cuantas asiganturas voy a aprobar?</p>
+		</itemBody>
+		<correctResponse>
+			<value>0</value>
+		</correctResponse>
+		<incorrectResponses>
+			<value>1</value>
+			<value>2</value>
+			<value>3</value>
+		</incorrectResponses>
+	</assessmentItem>
+<assessmentItem subject="Colores" author="xabipersona001@ikasle.ehu.es"><itemBody><p>¿Cual de estos no es un color?</p></itemBody><correctResponse><value>Pez</value></correctResponse><incorrectResponses><value>Rojo</value><value>Negro</value><value>Azul</value></incorrectResponses></assessmentItem></assessmentItems>
