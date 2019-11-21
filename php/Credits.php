@@ -13,13 +13,13 @@
         <p>Asier Garcia Osa</p>
         <p>Correo contacto: <a href="mailto:agarcia697@ikasle.ehu.eus" >agarcia697@ikasle.ehu.eus</a></p>
         <br>
-        <img src="../images/hombres-calvos.jpg" width="125" height="125">
+        <img src="../images/rock.jpeg" width="125" height="125">
         <p>Estudiante de Ingeniería Informática en la especialización <br> de Ingeniería del Software.</p>
         <br><hr>
         <p>Xabier Persona Peña</p>
         <p>Correo contacto: <a href="mailto:xpersona001@ikasle.ehu.eus" >xpersona001@ikasle.ehu.eus</a></p>
         <br>
-        <img src="../images/mister.png" width="125" height="125">
+        <img src="../images/mbean.jpg" width="125" height="125">
         <p>Estudiante de Ingeniería Informática en la especialización <br> de Ingeniería del Software.</p>
 
     </div>

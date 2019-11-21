@@ -2,6 +2,10 @@
 <html>
 <head>
     <?php include '../html/Head.html'?>
+
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../js/validar.js"></script>
+    
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
@@ -17,10 +21,16 @@
             </select>
             <p>Introduce tu dirección de correo: *</p>
             <input type="email" size="60" id="dirCorreo" name="dirCorreo" required >
+
+            <div id="avisocorreo" name="avisocorreo"></div>
+
             <p>Introduce tu nombre y apellido(s) *</p>
             <input type="text" size="60" id="nombreApellidos" name="nombreApellidos" required>
             <p>Contraseña: *</p>
             <input type="password" size="60" id="pass" name="pass" required>
+
+            <div id="avisocontrasena" name="avisocontrasena"></div>
+
             <p>Repite la contraseña: *</p>
             <input type="password" size="60" id="passR" name="passR" required>
             <div id="selector">
