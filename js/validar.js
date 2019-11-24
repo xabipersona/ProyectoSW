@@ -11,7 +11,6 @@ $(document).ready(function (event) {
                     $("#avisocorreo").css("color","green");
 
                     $contra = $("#pass");
-                    alert($contra.val());
 
 
                     if ($contra.val().trim().length >= 6) {
@@ -22,7 +21,6 @@ $(document).ready(function (event) {
                             datatype: "html",
                             success: function (respuesta) {
 
-                               // alert(respuesta.trim());
 
 
                                 if (respuesta.trim() == "VALIDA") {
