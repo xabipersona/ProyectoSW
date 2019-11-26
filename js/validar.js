@@ -28,7 +28,7 @@ $(document).ready(function (event) {
                                     
                                     $("#avisocontrasena").html("Contraseña VÁLIDA");
                                     $("#avisocontrasena").css("color","green");
-                                     $("#submit").attr("disabled", true);
+                                     $("#submit").attr("disabled", false);
 
                                     var contrasena = $("#pass").val();
                                     var contrasena_rep = $("#passR").val();
@@ -36,6 +36,8 @@ $(document).ready(function (event) {
                                 } else {
                                     $("#avisocontrasena").html("Contraseña no valida");
                                     $("#avisocontrasena").css("color","red");
+                                    $("#submit").attr("disabled", true);
+
                                 }
                             }
                         });
