@@ -12,7 +12,7 @@ session_start();
     <div>
       <?php
 
-     	if ($_SESSION["autenticado"] != "SI") {
+     	if ($_SESSION["autenticado"] != "SI" || $_SESSION["tipo"]!="admin") {
 			//si no existe, envio a la página de autentificación
 			header("Location: Layout.php");
 			//además salgo de este script
@@ -27,7 +27,7 @@ session_start();
             	die("Fallo al conectar con la base de datos: " .mysqli_connect_error());
         	}
         
-        	$sql = "SELECT * FROM Usuarios;";
+        	$sql = "SELECT * FROM usuarios;";
         	$resul = mysqli_query($link,$sql,MYSQLI_USE_RESULT);
         	if(!$resul){
             die("Error: ".mysqli_error($link));

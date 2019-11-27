@@ -1,4 +1,12 @@
 <?php
+session_start();
+if ($_SESSION["autenticado"] != "SI" || $_SESSION["tipo"]!="admin") {
+            //si no existe, envio a la página de autentificación
+            header("Location: Layout.php");
+            //además salgo de este script
+        
+            exit();        
+}
 
 	include "DbConfig.php";
 

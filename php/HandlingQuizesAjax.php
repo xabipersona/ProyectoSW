@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-if ($_SESSION["autenticado"] != "SI") {
+if ($_SESSION["autenticado"] != "SI" || $_SESSION["tipo"]!="normal") {
             //si no existe, envio a la página de autentificación
             header("Location: Layout.php");
             //además salgo de este script

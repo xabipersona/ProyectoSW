@@ -61,11 +61,11 @@ session_start();
                       
                       if ($_SESSION['email'] == "admin@ehu.es"){
 
-                        $_SESSION['tipo'] = admin;
+                        $_SESSION['tipo'] = "admin";
 
                       } else{
 
-                        $_SESSION['tipo'] = normal;
+                        $_SESSION['tipo'] = "normal";
                       }
 
                       echo "<script>

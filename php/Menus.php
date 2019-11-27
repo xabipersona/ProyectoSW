@@ -5,7 +5,6 @@
         <span class="right" id="register"><a href="SignUp.php">Registro</a></span>
         <span class="right" id="login"><a href="LogIn.php">Login</a></span>
         <span class="right" id="logout" style="display:none;"><a href="LogOut.php">Logout</a></span>
-        <span class="right" id="foto" style="display:none"><img id="image" width=\"50\" height=\"60\" alt=\"Imagen\"/></span>
 
     </header>
         
@@ -27,6 +26,8 @@
             $('#gestionar').show();
             $('#foto').show();
             $('#image').css('src', "\'data:image/*;base64,"+getImagenDeBD()+"\'");
+            $('#h1').append('<p><?php echo $_SESSION['email'];  ?></p>');
+            $("#h1").append("<img width=\"50\" height=\"60\" src=\"data:image/*;base64,<?php echo getImagenDeBD();?>\" alt=\"Imagen\"/>");
         
 
         }
@@ -48,6 +49,8 @@
             $('#logout').show();
             $('#gestCuentas').show();
             $('#foto').show();
+            $('#h1').append('<p><?php echo $_SESSION['email'];  ?></p>');
+            $("#h1").append("<img width=\"50\" height=\"60\" src=\"data:image/*;base64,<?php echo getImagenDeBD();?>\" alt=\"Imagen\"/>");
             
           
         }
@@ -80,7 +83,7 @@
                 die("Error: ".mysqli_connect_error);
             }
 
-            $sql = "SELECT foto FROM usuarios WHERE email=\"".$_GET['email']."\";";
+            $sql = "SELECT foto FROM usuarios WHERE email=\"".$_SESSION['email']."\";";
             $resul = mysqli_query($mysqli,$sql, MYSQLI_USE_RESULT);
             if(!$resul){
                 die("Error: ".mysqli_error($mysqli));

@@ -44,4 +44,4 @@
 			<value>3</value>
 		</incorrectResponses>
 	</assessmentItem>
-<assessmentItem subject="Informatica" author="prueba019@ikasle.ehu.eus"><itemBody><p>¿Asignaturas de Software?</p></itemBody><correctResponse><value>SW</value></correctResponse><incorrectResponses><value>LCSI</value><value>PAR</value><value>AM</value></incorrectResponses></assessmentItem><assessmentItem subject="Colores" author="prueba019@ikasle.ehu.eus"><itemBody><p>¿Cual de estos no es un color?</p></itemBody><correctResponse><value>Perro</value></correctResponse><incorrectResponses><value>Rojo</value><value>Negro</value><value>raton</value></incorrectResponses></assessmentItem></assessmentItems>
+</assessmentItems>
