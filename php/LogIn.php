@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,13 +29,13 @@
         <?php
             if(isset($_REQUEST['dirCorreo'])){
                 include 'DbConfig.php';
-                
+
                 $mysqli = mysqli_connect($server,$user,$pass,$basededatos);
                 if(!$mysqli){
                     die("Fallo al conectar con Mysql: ".mysqli_connect_error());
                 }
                 $email = $_REQUEST['dirCorreo'];
-                $pass = $_REQUEST['pass'];
+                $pass = crypt($_REQUEST['pass'],'st');                
                 
                 $sql = "SELECT * FROM usuarios WHERE email=\"".$email."\" and pass=\"".$pass."\";";
                 
@@ -41,13 +44,35 @@
                     die("Error: ".mysqli_error($mysqli));
                 }
                 $row = mysqli_fetch_array($resultado);
+
                 if($row['email']==$email){
                    /* sleep(3);
                     header("location:Layout.php?email=".$_REQUEST['dirCorreo']);*/
-                    echo "<script>
-                    alert('Inicio de sesion realizado correctamente. Pulsa aceptar para acceder a la pantalla principal.');
-                    window.location.href='Layout.php?email=".$_REQUEST['dirCorreo']."';
-                    </script>";  
+
+                    if ($row['estado']=='bloqueado'){
+
+                      echo "Usuario bloqueado. <br>";
+                      echo "<a href=\"javascript:history.back()\">Volver a atras</a>";
+
+                    }else{
+
+                      $_SESSION['email'] = $email;
+                      $_SESSION['autenticado'] = "SI";
+                      
+                      if ($_SESSION['email'] == "admin@ehu.es"){
+
+                        $_SESSION['tipo'] = admin;
+
+                      } else{
+
+                        $_SESSION['tipo'] = normal;
+                      }
+
+                      echo "<script>
+                      alert('Inicio de sesion realizado correctamente. Pulsa aceptar para acceder a la pantalla principal');
+                      window.location.href='Layout.php';
+                      </script>";  
+                    }
                 }else{
                     echo "Usuario o contraseña incorrectos, prueba de nuevo. <br>";
                     echo "<a href=\"javascript:history.back()\">Volver a atras</a>";

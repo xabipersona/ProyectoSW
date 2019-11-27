@@ -1,3 +1,14 @@
+<?php 
+session_start();
+
+if ($_SESSION["autenticado"] != "SI") {
+            //si no existe, envio a la página de autentificación
+            header("Location: Layout.php");
+            //además salgo de este script
+        
+            exit();        
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +28,7 @@
         <form action="AddQuestionWithImage.php" name="formquestion" id="formquestion" method="post" enctype="multipart/form-data">
             <p>Introduce tu dirección de correo: *</p>
             <?php
-            echo "<input type='text' size='60' id='dirCorreo' name='dirCorreo' value=".$_REQUEST['email']." readonly> "?>
+            echo "<input type='text' size='60' id='dirCorreo' name='dirCorreo' value=".$_SESSION['email']." readonly> "?>
             <p>Introduce el enunciado de la pregunta: *</p>
             <input type="text" size="60" id="nombrePregunta" name="nombrePregunta">
             <p>Respuesta correcta: *</p>

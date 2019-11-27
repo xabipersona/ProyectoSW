@@ -93,7 +93,9 @@
             $tipo = $_REQUEST['tipoUsu'];
             $email = $_REQUEST['dirCorreo'];
             $nombreApellidos = $_REQUEST['nombreApellidos'];
-            $pass = $_REQUEST['pass'];
+            $pass = crypt($_REQUEST['pass'], 'st');
+            $estado='activo';
+
             if($_FILES['Imagen']['name'] == ""){               
                 $image = "../images/usuarioAnonimo.jpg";
             }else{
@@ -101,7 +103,7 @@
             }
             
             $contenido_imagen = base64_encode(file_get_contents($image));
-            $sql = "INSERT INTO usuarios VALUES ($tipo,'$email','$nombreApellidos','$pass','$contenido_imagen');";
+            $sql = "INSERT INTO usuarios VALUES ($tipo,'$email','$nombreApellidos','$pass','$contenido_imagen','$estado');";
             
              if(!mysqli_query($mysqli,$sql))
             {
