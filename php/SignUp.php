@@ -95,15 +95,36 @@
             $nombreApellidos = $_REQUEST['nombreApellidos'];
             $pass = crypt($_REQUEST['pass'], 'st');
             $estado='activo';
+            $codigo= rand(00000,99999);
 
             if($_FILES['Imagen']['name'] == ""){               
                 $image = "../images/usuarioAnonimo.jpg";
             }else{
                 $image = $_FILES['Imagen']['tmp_name'];             
             }
-            
             $contenido_imagen = base64_encode(file_get_contents($image));
-            $sql = "INSERT INTO usuarios VALUES ($tipo,'$email','$nombreApellidos','$pass','$contenido_imagen','$estado');";
+
+            
+            $existe = "SELECT * FROM usuarios WHERE email=\"".$email."\"";
+
+            if(!mysqli_query($mysqli,$existe))
+            {
+                die("Error: " .mysqli_error($mysqli2));
+            } else{
+                echo" La cuenta de correo introducida ya esta asociada a una cuenta.<br>";
+                echo "<a href=\"javascript:history.back()\">Volver a atras</a>";
+            }
+            //mysqli_close($mysqli);
+
+           /* if ($existe != null){
+                echo" La cuenta de correo introducida ya esta asociada a una cuenta.<br>";
+                echo "<a href=\"javascript:history.back()\">Volver a atras</a>";
+            }
+            mysqli_close($mysqli);       */
+
+            
+
+            $sql = "INSERT INTO usuarios VALUES ($tipo,'$email','$nombreApellidos','$pass','$contenido_imagen','$estado', '$codigo');";
             
              if(!mysqli_query($mysqli,$sql))
             {
@@ -112,8 +133,22 @@
             echo "<script>
                     alert('Registro realizado correctamente. Pulsa aceptar para acceder a la pantalla de LogIn.');
                     window.location.href='LogIn.php';
-                </script>";        
+                </script>"; 
+            mysqli_close($mysqli);       
         }
+
+        /*function existeUsuario(){
+            $mysqli = mysqli_connect($server,$user,$pass,$basededatos);
+            
+            if(!$mysqli)
+            {
+                die("Fallo al conectar a MySQL: " .mysqli_connect_error());
+            }
+            
+            $email = $_REQUEST['dirCorreo'];
+            $existe = "SELECT * FROM usuarios WHERE email=\"".$email."\"";
+
+        }*/
     
         ?>
       

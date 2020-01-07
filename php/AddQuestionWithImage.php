@@ -31,7 +31,13 @@
                             $tema = $_REQUEST['temaPregunta'];
                             //$image = $_FILES['Imagen']['tmp_name'];
                             //$contenido_imagen = base64_encode(file_get_contents($image));
-                            $contenido_imagen = null; 
+                            if($_FILES['Imagen']['name'] == ""){               
+                                $image = "../images/usuarioAnonimo.jpg";
+                            }else{
+                                $image = $_FILES['Imagen']['tmp_name'];             
+                            }
+            
+                            $contenido_imagen = base64_encode(file_get_contents($image)); 
                             $sql = "INSERT INTO preguntas(email, enunciado, respuestac, respuestai1, respuestai2, respuestai3, complejidad, tema, imagen) VALUES('$email', '$enunciado', '$respuestac', '$respuestai1', '$respuestai2', '$respuestai3', $complejidad, '$tema', '$contenido_imagen')";
 
                             if(!mysqli_query($mysqli,$sql))
@@ -57,7 +63,6 @@
                             $valuesi->addChild('value',$respuestai1);
                             $valuesi->addChild('value',$respuestai2);
                             $valuesi->addChild('value',$respuestai3);
-
 
                             $xml->asXML('../xml/Questions.xml');
 

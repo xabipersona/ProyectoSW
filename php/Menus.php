@@ -5,6 +5,9 @@
         <span class="right" id="register"><a href="SignUp.php">Registro</a></span>
         <span class="right" id="login"><a href="LogIn.php">Login</a></span>
         <span class="right" id="logout" style="display:none;"><a href="LogOut.php">Logout</a></span>
+        <span class="right" id="logout" style="display:none;"><a href="LogOut.php">Logout</a></span>
+        <span class="right" id="changePass" style="display:none;"><a href="ChangePassword.php">¿Has olvidado tu contraseña?</a></span>
+
 
     </header>
         
@@ -13,6 +16,8 @@
         <span id="gestionar" style="display:none"><a href='HandlingQuizesAjax.php'>Gestionar Preguntas</a></span>
         <span id="gestCuentas" style="display:none"><a href="HandlingAccounts.php">Gestionar Usuarios</a></span>
         <span><a href='Credits.php'>Creditos</a></span>
+        <span id="play"><a href="Play.php">¡A jugar!</a></span>
+
         </nav>
     
         <script src="../js/jquery-3.4.1.min.js"></script>
@@ -24,12 +29,13 @@
             $('#login').hide();
             $('#logout').show();
             $('#gestionar').show();
+            $('#changePass').show();
+            $('#play').hide();
             $('#foto').show();
-            $('#image').css('src', "\'data:image/*;base64,"+getImagenDeBD()+"\'");
+           // $('#image').css('src', "\'data:image/*;base64,"+getImagenDeBD()+"\'");
             $('#h1').append('<p><?php echo $_SESSION['email'];  ?></p>');
             $("#h1").append("<img width=\"50\" height=\"60\" src=\"data:image/*;base64,<?php echo getImagenDeBD();?>\" alt=\"Imagen\"/>");
         
-
         }
     
         function cierreSesion(){
@@ -38,6 +44,8 @@
             $('#login').show();
             $('#logout').hide();
             $('#gestionar').hide();
+            $('#play').show();
+            $('#changePass').hide();
             $('#foto').hide();
 
         }

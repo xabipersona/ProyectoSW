@@ -18,13 +18,14 @@ if ($_SESSION["autenticado"] != "SI" || $_SESSION["tipo"]!="normal") {
     <script src="../js/ValidateFieldsQuestion.js"></script>
     <script src="../js/ShowQuestionsAjax.js"></script>
     <script src="../js/AddQuestionsAjax.js"></script>
-
    
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
     <div>
+        <div id="preguntastotales" class="tabla"></div>
+        <script>$('#preguntastotales').load('../php/TablaUsersConectados.php');</script>
         <form action="AddQuestionWithImage.php" name="formquestion" id="formquestion" method="post" enctype="multipart/form-data">
             <p>Introduce tu dirección de correo: *</p>
             <?php
@@ -47,15 +48,12 @@ if ($_SESSION["autenticado"] != "SI" || $_SESSION["tipo"]!="normal") {
             </select>
             <p>Introduce el tema de la pregunta: *</p>
             <input type="text" size="60" id="temaPregunta" name="temaPregunta">
-            <!-- <div id="selector">
-            <input type="file" id="file" accept="image/*" name="file"> 
-            </div> -->
-
-
+            <p>Selecciona una foto para la pregunta: (Opcional) </p>
+            <input type="file" id="file" accept="image/*" name="Imagen">
             
             <p> <input type="button" id="Mostrar Preguntas" value="Mostrar Preguntas" onclick="preguntasXml()"> <input type="button" id="Enviar" value="Enviar"> <input type="reset" id="reset" value="reset"></p>
 
-            <div id="resultado"> </div>
+            <div id="resultado"></div>
             
         </form>
 

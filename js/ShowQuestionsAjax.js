@@ -1,15 +1,15 @@
 
-        XMLHttpRequestObject = new XMLHttpRequest();
-        XMLHttpRequestObject.onreadystatechange = function(){
+        XMLHttpRequestObject2 = new XMLHttpRequest();
+        XMLHttpRequestObject2.onreadystatechange = function(){
             //alert (XMLHttpRequestObject.readyState);
-            if (XMLHttpRequestObject.readyState==4){
-                var obj = document.getElementById('resultado');
-                obj.innerHTML = XMLHttpRequestObject.responseText;
+            if (XMLHttpRequestObject2.readyState==4){
+                var obj2 = document.getElementById('resultado');
+                obj2.innerHTML = XMLHttpRequestObject2.responseText;
             }
         }
 
 function preguntasXml(){
-    XMLHttpRequestObject.open("GET",'tabla.php');
-    XMLHttpRequestObject.send(null);
-}
+    XMLHttpRequestObject2.open("GET",'tabla.php');
+    XMLHttpRequestObject2.send(null);
 
+}

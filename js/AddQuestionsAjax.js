@@ -14,6 +14,7 @@ $('#Enviar').click(function(){
             data: str,
             success:function(){ 
                 $('#resultado').load("../php/tabla.php");
+                $('#preguntastotales').load('../php/TablaUsersConectados.php');
             },
             cache: false,
             error:function(){ 
@@ -22,5 +23,4 @@ $('#Enviar').click(function(){
 
         }); 
         });
-
 });

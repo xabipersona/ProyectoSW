@@ -1,47 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <assessmentItems>
-	<assessmentItem subject="Web" author="jvadillo001@ikasle.ehu.eus">
-		<itemBody>
-			<p>Tag HTML para añadir un formulario</p>
-		</itemBody>
-		<correctResponse>
-			<value>
-				FORM
-			</value>
-		</correctResponse>
-		<incorrectResponses>
-			<value> OBJECT </value>
-			<value> TABLE </value>
-			<value> DIV </value>
-		</incorrectResponses>
-	</assessmentItem>
-		<assessmentItem subject="Internet" author="rarruabarrena001@ikasle.ehu.eus">
-		<itemBody>
-			<p>Este protocolo acabará funcionando
-			incluso entre dos latas unidas por un cordón</p>
-		</itemBody>
-		<correctResponse>
-			<value>
-				TCP/IP
-			</value>
-		</correctResponse>
-		<incorrectResponses>
-			<value> HTTP </value>
-			<value> SMTP </value>
-			<value> Ninguna es correcta </value>
-		</incorrectResponses>
-	</assessmentItem>
-	<assessmentItem subject="Curso" author="xabipersona@ehu.es">
-		<itemBody>
-			<p>¿Cuantas asiganturas voy a aprobar?</p>
-		</itemBody>
-		<correctResponse>
-			<value>0</value>
-		</correctResponse>
-		<incorrectResponses>
-			<value>1</value>
-			<value>2</value>
-			<value>3</value>
-		</incorrectResponses>
-	</assessmentItem>
-</assessmentItems>
+<assessmentItem subject="Informatica" author="xpersona001@ikasle.ehu.eus">
+	<itemBody>
+		<p>¿Asignaturas de Software?</p>
+	</itemBody>
+	<correctResponse>
+		<value>SW</value>
+	</correctResponse>
+	<incorrectResponses>
+		<value>LCSI</value>
+		<value>PAR</value>
+		<value>AM</value>
+	</incorrectResponses>
+</assessmentItem>
+<assessmentItem subject="Colores" author="xpersona001@ikasle.ehu.eus"><itemBody><p>¿Cual de estos no es un color?</p></itemBody><correctResponse><value>Perro</value></correctResponse><incorrectResponses><value>Rojo</value><value>Negro</value><value>Azul</value></incorrectResponses></assessmentItem><assessmentItem subject="Informatica" author="xpersona001@ikasle.ehu.eus"><itemBody><p>¿Cual de estos no es un lenguaje de programación?</p></itemBody><correctResponse><value>Internet</value></correctResponse><incorrectResponses><value>Java</value><value>PHP</value><value>Python</value></incorrectResponses></assessmentItem><assessmentItem subject="Animales" author="xpersona001@ikasle.ehu.eus"><itemBody><p>¿Cual de estos no es un animal?</p></itemBody><correctResponse><value>Rojo</value></correctResponse><incorrectResponses><value>Perro</value><value>Gato</value><value>Raton</value></incorrectResponses></assessmentItem><assessmentItem subject="Informatica" author="xpersona001@ikasle.ehu.eus"><itemBody><p>¿Cual de estas no es una etiqueta HTML?</p></itemBody><correctResponse><value>echo</value></correctResponse><incorrectResponses><value>a</value><value>table</value><value>p</value></incorrectResponses></assessmentItem><assessmentItem subject="Informatica" author="xpersona001@ikasle.ehu.eus"><itemBody><p>¿Cuantas asiganturas voy a aprobar?</p></itemBody><correctResponse><value>0</value></correctResponse><incorrectResponses><value>1</value><value>2</value><value>3</value></incorrectResponses></assessmentItem><assessmentItem subject="sdgs" author="xpersona001@ikasle.ehu.eus"><itemBody><p>adfasdasadfadf</p></itemBody><correctResponse><value>sdgfas</value></correctResponse><incorrectResponses><value>adf</value><value>df</value><value>d</value></incorrectResponses></assessmentItem><assessmentItem subject="Curso" author="prueba019@ikasle.ehu.eus"><itemBody><p>¿Asignatura más facil de software?</p></itemBody><correctResponse><value>IPC</value></correctResponse><incorrectResponses><value>SW</value><value>IS2</value><value>DBD</value></incorrectResponses></assessmentItem><assessmentItem subject="Historia" author="xpersona001@ikasle.ehu.eus"><itemBody><p>¿Año del descubrimiento de america?</p></itemBody><correctResponse><value>1492</value></correctResponse><incorrectResponses><value>1987</value><value>1543</value><value>1512</value></incorrectResponses></assessmentItem></assessmentItems>
