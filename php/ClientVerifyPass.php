@@ -3,7 +3,7 @@
     require_once('../lib/nusoap.php');
     require_once('../lib/class.wsdlcache.php');
     //creamos el objeto de tipo soap_server
-    $ns="http://localhost/LabSW/";
+    $ns="http://localhost/EntregaLabSeguridad/";
     $server = new soap_server();
     $server->configureWSDL('compr',$ns);
     $server->wsdl->schemaTargetNamespace=$ns;
